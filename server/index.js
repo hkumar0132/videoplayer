@@ -4,15 +4,38 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const { MongoClient } = require('mongodb');
 
 const mongoURI = require('./config/key');
 const checkAuth = require('./middleware/check-auth');
 
-mongoose.connect(mongoURI, {
-  useCreateIndex: true, 
-  useNewUrlParser: true, 
-  useUnifiedTopology: true}
-);
+async function listDatabases(client){
+  databasesList = await client.db().admin().listDatabases();
+
+  console.log("Databases:");
+  databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+};
+
+async function main() {
+
+  const client = new MongoClient(mongoURI);
+
+  try {
+      // Connect to the MongoDB cluster
+      await client.connect();
+
+      // Make the appropriate DB calls
+      await  listDatabases(client);
+
+  } catch (e) {
+      console.error(e);
+  } finally {
+      await client.close();
+  }
+}
+
+main().catch(console.error);
+
 
 // Used to log everything like GET, POST, etc requests
 app.use(morgan('dev'));
@@ -31,9 +54,9 @@ app.use(bodyParser.json());
 app.use('/api/videos', express.static('media/uploads'));
 
 // Routes
-app.use('/api/signIn', require('./routes/Authentication/signIn'));
-app.use('/api/register', require('./routes/Authentication/register'));
-app.use('/api/videoGet', checkAuth, require('./routes/Video/videoGet'));
-app.use('/api/videoPost', checkAuth, require('./routes/Video/videoPost'));
+// app.use('/api/signIn', require('./routes/Authentication/signIn'));
+// app.use('/api/register', require('./routes/Authentication/register'));
+app.use('/api/videoGet', require('./routes/Video/videoGet'));
+app.use('/api/videoPost', require('./routes/Video/videoPost'));
 
 module.exports = app;

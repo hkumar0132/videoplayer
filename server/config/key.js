@@ -1,1 +1,2 @@
-export const mongoURI = `mongodb+srv://Himanshu:Ivyvm7j4**@cluster0.vnxjg.mongodb.net/test`;
+const mongoURI = `mongodb+srv://Himanshu:6WvDrQcpyeqAa3GM@cluster0.qjx6u.mongodb.net/test`;
+module.exports = mongoURI;

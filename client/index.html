@@ -5,10 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VIDEO PLAYER APP</title>
     <link rel="stylesheet" href="/static/css/index.css">
+    <script type="module" src="/static/js/index.js"></script>
 </head>
 <body>
-    VIDEO PLAYER APP!
-    <div id="app"></div>
-    <script type="module" src="/static/js/index.js"></script>
+    VIDEO PLAYER APP
+    <div id="app">
+        <!-- Code for testing back-end API - videoPost -->
+        <form class="upload">
+            <input type="file" name="uploadFile" accept=".mp4" required />
+            <br/><br/>
+            <input type="submit" />
+         </form>
+
+        <!-- <video id="videoPlayer" width="650" controls muted="muted" autoplay>
+            <source src="/video" type="video/mp4" />
+        </video> -->
+    </div>
+
+     <!-- Code for testing back-end API - videoPost -->
+     <script>
+
+        const uploadForm = document.querySelector('.upload');
+        
+        uploadForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            let file = e.target.uploadFile.files[0];
+            
+            let formData = new FormData()
+            formData.append('file', file)
+
+            await fetch('http://localhost:5000/video/videoPost', {
+                method: 'POST',
+                body: formData,
+                // 'Content-Type': 'application/mp4',
+                // 'Accept': 'application/mp4'
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.errors) {
+                    alert(data.errors)
+                }
+                else {
+                    console.log(data)
+                }
+            });
+        });
+
+    </script>
 </body>
 </html>

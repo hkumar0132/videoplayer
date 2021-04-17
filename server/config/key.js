@@ -1,2 +1,2 @@
-const mongoURI = `mongodb+srv://Himanshu:6WvDrQcpyeqAa3GM@cluster0.qjx6u.mongodb.net/test`;
+const mongoURI = ``; //Removed for security reason
 module.exports = mongoURI;

@@ -1,56 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIDEO PLAYER APP</title>
-    <link rel="stylesheet" href="/static/css/index.css">
-    <script type="module" src="/static/js/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="vendors/css/hard reset.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
+    <title>MeTube</title>
+    <meta charset="utf-8">
+
 </head>
+
 <body>
-    VIDEO PLAYER APP
-    <div id="app">
-        <!-- Code for testing back-end API - videoPost -->
-        <form class="upload">
-            <input type="file" name="uploadFile" accept=".mp4" required />
-            <br/><br/>
-            <input type="submit" />
-         </form>
+    <section>
+        <section class="sec-nav">
+            <section class="sec-nav-top">
+                <div class="left bord">
+                    <a class="bord" href="https://www.youtube.com">
+                        <ion-icon class="bord" name="logo-youtube"></ion-icon>YouTube
+                    </a>
+                </div>
+                <div class="right">
+                    <ul class="">
+                        <li><a href="#">
+                                <ion-icon name="person-circle"></ion-icon>
+                            </a></li>
+                        <li><a href="#">
+                                <ion-icon name="notifications"></ion-icon>
+                            </a></li>
+                        <li><a href="#">
+                                <ion-icon name="apps"></ion-icon>
+                            </a></li>
+                        <li><a href="#">
+                                <ion-icon name="videocam"></ion-icon>
+                            </a></li>
+                    </ul>
 
-        <!-- <video id="videoPlayer" width="650" controls muted="muted" autoplay>
-            <source src="/video" type="video/mp4" />
-        </video> -->
-    </div>
+                </div>
+                <div class="search bord clearfix">
+                    <input type="text" name="search" placeholder="Search">
+                    <section id="a">
+                        <a href="#"><ion-icon name="search-outline"></ion-icon></a>
+                    </section>
+                    
+                    <a class="bord" href="#">
+                        <ion-icon class="" name="mic"></ion-icon>
+                    </a>
+                </div>
 
-     <!-- Code for testing back-end API - videoPost -->
-     <script>
+            </section>
+            <sec class="sec-nav-left">
+                <ion-icon name="reorder-three"></ion-icon>
+            </sec>
+        </section>
+    </section>
 
-        const uploadForm = document.querySelector('.upload');
-        
-        uploadForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            let file = e.target.uploadFile.files[0];
-            
-            let formData = new FormData()
-            formData.append('file', file)
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="source/algo.js"></script>
 
-            await fetch('http://localhost:5000/video/videoPost', {
-                method: 'POST',
-                body: formData,
-                // 'Content-Type': 'application/mp4',
-                // 'Accept': 'application/mp4'
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.errors) {
-                    alert(data.errors)
-                }
-                else {
-                    console.log(data)
-                }
-            });
-        });
-
-    </script>
 </body>
+
 </html>

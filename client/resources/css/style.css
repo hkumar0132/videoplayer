@@ -1,0 +1,104 @@
+/*--------------colors-------------
+background->#f2f3f4
+----------------------------------*/
+
+html{
+    box-sizing: border-box;
+    background-color: #f2f3f4;
+    display:100vh;
+}
+*,*:before,*:after{
+    box-sizing: inherit;
+}
+
+.clearfix:after{
+    content:"hello brother";
+    visibility:hidden;
+    clear:both;
+}
+.borda{
+    border:1px solid red;
+}
+.bordb{
+    border:1px solid green;
+}
+.bordc{
+    border:1px solid blue;
+}
+/*-------------------------------------------------
+                    SEC-NAV
+---------------------------------------------------*/
+/*--------------------------TOP--------------------------*/
+.sec-nav-top{
+    background-color: rgb(255, 255, 255);
+    width:100%;
+    height:56px;
+    padding:0 16px;
+    text-align: center;
+}
+.sec-nav-top .search input[type="text"]{
+    display:inline-block;
+    width:564px;
+    height:35px;
+    padding: 4px;
+    margin-top: 10px;
+}
+.sec-nav-top .search ion-icon{
+    vertical-align: middle;
+    margin-left:5px;
+}
+.sec-nav-top .search #a{
+    display: inline-block;
+    background-color: #f2f3f4;
+    padding:5px 24px;
+    padding-bottom:4px;
+    text-align: center;
+    border:1px solid rgb(121, 121, 121);
+    margin-left:-4px;
+}
+.sec-nav-top ion-icon{
+    font-size:24px;
+    color:rgb(90, 81, 81);
+}
+.sec-nav-top a{
+    text-decoration: none;
+}
+.sec-nav-top .left{
+    float:left;
+    margin-top:18px;
+    margin-left:3%;
+}
+
+.sec-nav-top .left ion-icon{
+    vertical-align: middle;
+    color:#FF0000;
+    margin-right:5px;
+}
+.sec-nav-top .left a{
+    color:#282828;
+}
+.sec-nav-top .right{
+    margin-right:16px;
+}
+.sec-nav-top .right li{
+    float:right;
+    list-style:none;
+    height:38px;
+    width:48px;
+    margin-top:14px;
+    padding-left:6px;
+}
+
+
+
+
+
+
+/*--------------------------------left--------------------------*/
+
+.sec-nav-left{
+    background-color:brown;
+    /* height:100vh; */
+    width:224px;
+    padding-left:16px;
+}
